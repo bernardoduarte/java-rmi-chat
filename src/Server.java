@@ -8,7 +8,9 @@ public class Server {
         Configuration config = new Configuration();
         config.load();
         Registry registry = LocateRegistry.createRegistry(Integer.parseInt(config.get("rmi.port")));
-        ServerRemoteImpl server = new ServerRemoteImpl();
+        String address = config.get("multicast.address");
+        int port = Integer.parseInt(config.get("multicast.port"));
+        ServerRemoteImpl server = new ServerRemoteImpl(registry, address, port);
         registry.rebind("Server", server);
     }
 

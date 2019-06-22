@@ -1,3 +1,3 @@
 public interface MessageListenable {
-    public void listenMessage(Message msg);
+    void listenMessage(Message msg);
 }
